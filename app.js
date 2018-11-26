@@ -5,7 +5,6 @@ var express 			= require("express"),
           
 app.set("view engine", "ejs");
 
-// app.use(express.static(__dirname + '/public'));
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,6 +15,10 @@ app.use(require("cookie-session")({
 	resave: false,
 	saveUninitialized: false
 }));
+
+app.get('/', (req, res) => {
+    res.render('index');
+});
 
 //Body Parser Middleware
 app.use(bodyParser.urlencoded({extended: true}));
